@@ -1,317 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BloomBuddy – Every Child Has a Path to Bloom</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SproutPath — Learning & Support for Every Child</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <nav>
-    <a class="nav-logo" href="#">Bloom<span>Buddy</span></a>
-    <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#privacy">Privacy</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <a class="nav-cta" href="#download">Download Free</a>
-    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">🌱</div>
+    <span>SproutPath</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#download">Download</a></li>
+  </ul>
+  <a href="#download" class="nav-cta">Download App</a>
+</nav>
 
-  <!-- ── HERO ── -->
-  <section class="hero">
-    <div class="hero-content max-w">
-
-      <div class="hero-text fade-up">
-        <div class="hero-eyebrow"><div class="dot"></div> Designed for Every Unique Child</div>
-        <h1>Every child has a path to <em>bloom</em></h1>
-        <p class="hero-sub">BloomBuddy is your family's trusted companion — helping your child learn, grow, communicate and thrive at their own pace.</p>
-        <div class="hero-badges">
-          <span class="badge">🔒 100% Private</span>
-          <span class="badge">📱 Works Offline</span>
-          <span class="badge">🇮🇳 12 Languages</span>
-          <span class="badge">✨ No Ads</span>
-          <span class="badge">👨‍👩‍👧 Parent Controls</span>
-        </div>
-        <div class="hero-store-row">
-          <a class="store-btn" href="#download">
-            <span class="si">🍎</span>
-            <span><small>Download on the</small>App Store</span>
-          </a>
-          <a class="store-btn secondary" href="#download">
-            <span class="si">▶</span>
-            <span><small>Get it on</small>Google Play</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-visual fade-up" style="transition-delay: 0.15s">
-        <div class="phone-wrap">
-          <svg viewBox="0 0 260 520" xmlns="http://www.w3.org/2000/svg" width="260" aria-label="BloomBuddy app screen preview">
-            <!-- Phone body -->
-            <rect width="260" height="520" rx="36" fill="#534AB7"/>
-            <!-- Notch -->
-            <rect x="88" y="10" width="84" height="22" rx="11" fill="#3d3594"/>
-            <!-- Screen -->
-            <rect x="12" y="12" width="236" height="496" rx="26" fill="#F7F5FF"/>
-            <!-- Status bar -->
-            <rect x="12" y="12" width="236" height="36" rx="26" fill="#F7F5FF"/>
-            <text x="30" y="34" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#534AB7">BloomBuddy</text>
-            <text x="210" y="34" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#7B78A8">हिन्दी</text>
-            <!-- Greeting card -->
-            <rect x="22" y="58" width="216" height="54" rx="14" fill="#fff" filter="url(#shadow)"/>
-            <text x="38" y="78" font-family="Nunito,sans-serif" font-size="10" font-weight="900" fill="#534AB7">Good Morning! 🌟</text>
-            <text x="38" y="96" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#7B78A8">You have 3 activities today</text>
-            <rect x="192" y="65" width="34" height="34" rx="10" fill="#FFF3CD"/>
-            <text x="200" y="87" font-family="Nunito,sans-serif" font-size="16">⭐</text>
-            <!-- 4 main buttons -->
-            <rect x="22"  y="124" width="100" height="88" rx="16" fill="#534AB7"/>
-            <text x="52"  y="156" font-family="Nunito,sans-serif" font-size="24">😊</text>
-            <text x="36"  y="200" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="#fff">Feelings</text>
-            <rect x="138" y="124" width="100" height="88" rx="16" fill="#1D9E75"/>
-            <text x="168" y="156" font-family="Nunito,sans-serif" font-size="24">📅</text>
-            <text x="148" y="200" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="#fff">My Schedule</text>
-            <rect x="22"  y="222" width="100" height="88" rx="16" fill="#D85A30"/>
-            <text x="52"  y="254" font-family="Nunito,sans-serif" font-size="24">🎨</text>
-            <text x="38"  y="298" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="#fff">Activities</text>
-            <rect x="138" y="222" width="100" height="88" rx="16" fill="#185FA5"/>
-            <text x="168" y="254" font-family="Nunito,sans-serif" font-size="24">🗣️</text>
-            <text x="150" y="298" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="#fff">Talk Board</text>
-            <!-- Quick Say strip -->
-            <rect x="22" y="322" width="216" height="72" rx="14" fill="#fff"/>
-            <text x="34" y="340" font-family="Nunito,sans-serif" font-size="8" font-weight="900" fill="#534AB7">🗣 Quick Say</text>
-            <rect x="30"  y="346" width="42" height="38" rx="10" fill="#EEF"/>
-            <text x="42"  y="362" font-family="Nunito,sans-serif" font-size="16">🍎</text>
-            <text x="37"  y="378" font-family="Nunito,sans-serif" font-size="7" font-weight="800" fill="#534AB7">Apple</text>
-            <rect x="80"  y="346" width="42" height="38" rx="10" fill="#EFE"/>
-            <text x="92"  y="362" font-family="Nunito,sans-serif" font-size="16">💧</text>
-            <text x="87"  y="378" font-family="Nunito,sans-serif" font-size="7" font-weight="800" fill="#1D9E75">Water</text>
-            <rect x="130" y="346" width="42" height="38" rx="10" fill="#FEF"/>
-            <text x="142" y="362" font-family="Nunito,sans-serif" font-size="16">🚽</text>
-            <text x="136" y="378" font-family="Nunito,sans-serif" font-size="7" font-weight="800" fill="#534AB7">Toilet</text>
-            <rect x="180" y="346" width="42" height="38" rx="10" fill="#FFF3CD"/>
-            <text x="192" y="362" font-family="Nunito,sans-serif" font-size="16">😴</text>
-            <text x="188" y="378" font-family="Nunito,sans-serif" font-size="7" font-weight="800" fill="#BA7517">Sleep</text>
-            <!-- Privacy note -->
-            <rect x="22" y="406" width="216" height="30" rx="10" fill="rgba(29,158,117,0.12)"/>
-            <text x="36" y="425" font-family="Nunito,sans-serif" font-size="9" font-weight="800" fill="#1D9E75">🔒 All data stays only on this device</text>
-            <!-- Language chips -->
-            <rect x="22"  y="446" width="50" height="18" rx="9" fill="rgba(83,74,183,0.1)"/>
-            <text x="31"  y="458" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="#534AB7">हिन्दी</text>
-            <rect x="78"  y="446" width="46" height="18" rx="9" fill="rgba(83,74,183,0.1)"/>
-            <text x="87"  y="458" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="#534AB7">தமிழ்</text>
-            <rect x="130" y="446" width="50" height="18" rx="9" fill="rgba(83,74,183,0.1)"/>
-            <text x="137" y="458" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="#534AB7">తెలుగు</text>
-            <rect x="186" y="446" width="42" height="18" rx="9" fill="rgba(83,74,183,0.1)"/>
-            <text x="194" y="458" font-family="Nunito,sans-serif" font-size="8" font-weight="800" fill="#534AB7">+9 more</text>
-            <!-- Home indicator -->
-            <rect x="106" y="500" width="48" height="5" rx="3" fill="rgba(83,74,183,0.25)"/>
-            <defs>
-              <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
-                <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(83,74,183,0.10)"/>
-              </filter>
-            </defs>
-          </svg>
-        </div>
-      </div>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Learning &amp; support,<br>built for <em>every child</em></h1>
+    <p>SproutPath gives children the structure, tools, and joy they need to thrive — at home, at school, and everywhere in between.</p>
+    <div class="hero-buttons">
+      <a href="#download" class="btn-primary">Get Started Free</a>
+      <a href="#features" class="btn-secondary">See the App</a>
     </div>
-  </section>
+  </div>
+  <div class="hero-screens" id="heroScreens">
+    <div class="phone phone-1"><img src="images/Screenshot_2026-05-20_at_6_45_49_AM.png" alt="Dashboard" /></div>
+    <div class="phone phone-2"><img src="images/Screenshot_2026-05-20_at_6_46_53_AM.png" alt="Schedule" /></div>
+    <div class="phone phone-3"><img src="images/Screenshot_2026-05-20_at_6_46_35_AM.png" alt="Study" /></div>
+    <div class="phone phone-4"><img src="images/Screenshot_2026-05-20_at_6_46_45_AM.png" alt="Activities" /></div>
+    <div class="phone phone-5"><img src="images/Screenshot_2026-05-20_at_6_47_01_AM.png" alt="Parents" /></div>
+  </div>
+</section>
 
-  <!-- ── TRUST BAR ── -->
-  <div class="trust-bar">
-    <div class="trust-inner">
-      <div class="trust-item">🔒 Data never leaves your device</div>
-      <div class="trust-item">📵 No advertisements</div>
-      <div class="trust-item">📱 Works offline</div>
-      <div class="trust-item">🇮🇳 India &amp; 🇸🇬 Singapore</div>
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-card reveal">
+    <div class="stat-icon" style="background:#EDE9FF;">🎯</div>
+    <div><h3>8 Modules</h3><p>Covering daily life, learning &amp; calm</p></div>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-icon" style="background:#FFF0F6;">💜</div>
+    <div><h3>Child-first</h3><p>Visual, accessible, sensory-aware design</p></div>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-icon" style="background:#E8F5E9;">🌍</div>
+    <div><h3>12 Languages</h3><p>Full interface &amp; content localisation</p></div>
+  </div>
+</div>
+
+<!-- SCREENS -->
+<!-- FEATURES + SCREENS COMBINED -->
+<section class="section" id="features">
+  <div class="section-header reveal">
+    <div class="section-tag">Tools that make a real difference</div>
+    <h2>Everything in one place</h2>
+    <p>Every screen is thoughtfully designed to support daily life, build real skills, and nurture wellbeing — for children and the adults who care for them.</p>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="showcase-row reveal">
+    <div class="showcase-screen">
+      <div class="showcase-phone">
+        <img src="images/Screenshot_2026-05-20_at_6_45_49_AM.png" alt="Dashboard screen" />
+      </div>
+    </div>
+    <div class="showcase-text">
+      <div class="showcase-tag">Dashboard</div>
+      <h3>Your child's world, at a glance</h3>
+      <p>The Dashboard is your child's home base — a calm, colourful hub with quick access to Emotions, Study, Activities, Schedule, Calm Corner, My Map, and Parents Hub. The star chart banner celebrates each day's wins, and My Memories sits ready to capture special moments. Everything your child needs is one tap away, with no clutter and no confusion.</p>
+      <ul class="showcase-bullets">
+        <li>⚡ Fully customisable Quick Access shortcuts</li>
+        <li>⭐ Live star chart progress at a glance</li>
+        <li>📸 Memories gallery built right in</li>
+      </ul>
     </div>
   </div>
 
-  <!-- ── FEATURES ── -->
-  <section class="features-section" id="features">
-    <div class="max-w">
-      <div class="sec-label fade-up">Everything your child needs</div>
-      <h2 class="sec-title fade-up">Powerful tools, wrapped in joy</h2>
-      <p class="sec-sub fade-up">From emotion learning to calming exercises — BloomBuddy brings together everything in one safe place.</p>
-
-      <div class="features-grid">
-        <div class="fc fade-up" style="--fc-color: #D85A30">
-          <span class="fc-icon">😊</span>
-          <div class="fc-title">Emotion Learning Centre</div>
-          <div class="fc-desc">Interactive cards help your child recognise and name their feelings in a gentle, fun way.</div>
-        </div>
-        <div class="fc fade-up" style="--fc-color: #534AB7">
-          <span class="fc-icon">🗣️</span>
-          <div class="fc-title">AAC Communication Board</div>
-          <div class="fc-desc">A picture-and-symbol board that speaks aloud when tapped — helping children express their needs clearly.</div>
-        </div>
-        <div class="fc fade-up" style="--fc-color: #1D9E75">
-          <span class="fc-icon">🌬️</span>
-          <div class="fc-title">Calm Corner</div>
-          <div class="fc-desc">Guided breathing exercises and sensory tools to help your child self-regulate when overwhelmed.</div>
-        </div>
-        <div class="fc fade-up" style="--fc-color: #185FA5">
-          <span class="fc-icon">📅</span>
-          <div class="fc-title">Visual Schedule</div>
-          <div class="fc-desc">Shows your child's day visually — reducing anxiety and building independence through predictability.</div>
-        </div>
-        <div class="fc fade-up" style="--fc-color: #BA7517">
-          <span class="fc-icon">🔢</span>
-          <div class="fc-title">Maths &amp; English Learning</div>
-          <div class="fc-desc">Colourful interactive exercises for numbers, letters and reading — celebrating every milestone.</div>
-        </div>
-        <div class="fc fade-up" style="--fc-color: #D85A30">
-          <span class="fc-icon">⭐</span>
-          <div class="fc-title">Stars Reward System</div>
-          <div class="fc-desc">Every achievement earns a star — a gentle motivator that celebrates effort, not just results.</div>
-        </div>
+  <!-- Study -->
+  <div class="showcase-row showcase-row--reverse reveal">
+    <div class="showcase-screen">
+      <div class="showcase-phone">
+        <img src="images/Screenshot_2026-05-20_at_6_46_35_AM.png" alt="Study screen" />
       </div>
     </div>
-  </section>
+    <div class="showcase-text">
+      <div class="showcase-tag">Study</div>
+      <h3>Learning built for every child's pace</h3>
+      <p>The Study screen organises subjects into two clear groups: Numbers &amp; Logic — covering Math, Measurements, and Currency — and Language &amp; Stories, with English and Mother Tongue modules. Each topic is broken into short, accessible steps designed for children who learn differently. Content is available in all 12 supported languages so every lesson feels familiar and achievable.</p>
+      <ul class="showcase-bullets">
+        <li>🔢 Math, Measurements &amp; Currency modules</li>
+        <li>📖 English &amp; Mother Tongue language learning</li>
+        <li>🌐 Available in 12 Indian languages</li>
+      </ul>
+    </div>
+  </div>
 
-  <!-- ── PRIVACY ── -->
-  <section class="privacy-section" id="privacy">
-    <div class="max-w">
-      <div class="sec-label fade-up">Your family's privacy</div>
-      <h2 class="sec-title fade-up">Built on a promise: <em style="font-style: italic; color: #A8A4E8">your data stays yours</em></h2>
-      <p class="sec-sub fade-up">BloomBuddy was designed from the ground up with privacy as the foundation — not an afterthought.</p>
-
-      <div class="priv-grid fade-up">
-        <div class="priv-card">
-          <span class="icon">📱</span>
-          <div class="priv-title">All data stays on your device</div>
-          <div class="priv-desc">Every detail — profile, progress, routines, journal entries — is stored only on your phone or tablet. It never leaves.</div>
-        </div>
-        <div class="priv-card">
-          <span class="icon">🚫</span>
-          <div class="priv-title">Zero data shared externally</div>
-          <div class="priv-desc">We do not share, sell or transmit any personal information to any third party — ever.</div>
-        </div>
-        <div class="priv-card">
-          <span class="icon">📶</span>
-          <div class="priv-title">Most features work offline</div>
-          <div class="priv-desc">Communication board, schedules, calming exercises and learning tools work fully offline. Internet is only needed for video streaming.</div>
-        </div>
-        <div class="priv-card">
-          <span class="icon">👤</span>
-          <div class="priv-title">No account required</div>
-          <div class="priv-desc">No email, no sign-up, no personal info needed. Download and start straight away.</div>
-        </div>
+  <!-- Activities -->
+  <div class="showcase-row reveal">
+    <div class="showcase-screen">
+      <div class="showcase-phone">
+        <img src="images/Screenshot_2026-05-20_at_6_46_45_AM.png" alt="Activities screen" />
       </div>
     </div>
-  </section>
+    <div class="showcase-text">
+      <div class="showcase-tag">Activities</div>
+      <h3>Mind, body, and creativity — all in one place</h3>
+      <p>Activities is organised into three categories so finding the right outlet is always easy. Mind &amp; Body includes Yoga &amp; Exercise, the Calm Corner, the 6-Second Rule emotional regulation tool, Mirror Mode for self-awareness, and Devotional practices. Sports covers All Sports and Skating &amp; More. Creative activities bring painting, colouring, and craft to life — giving every child a way to express, move, and recharge.</p>
+      <ul class="showcase-bullets">
+        <li>🧘 Yoga, Calm Corner &amp; 6-Second Rule</li>
+        <li>⚽ Sports activities including Skating</li>
+        <li>🎨 Creative: painting, colouring &amp; more</li>
+      </ul>
+    </div>
+  </div>
 
-  <!-- ── PARENT TOOLS ── -->
-  <section class="parent-section" id="parents">
-    <div class="max-w">
-      <div class="sec-label fade-up">For parents</div>
-      <h2 class="sec-title fade-up">You are your child's greatest support</h2>
-      <p class="sec-sub fade-up">A dedicated set of tools to help you understand your child, track growth, and feel confident every day.</p>
-
-      <div class="parent-grid">
-        <div class="parent-card fade-up">
-          <span class="icon">📓</span>
-          <h4>Behaviour Journal</h4>
-          <p>Log difficult moments and triggers. Over time, a heatmap reveals patterns to help you find strategies that truly work.</p>
-        </div>
-        <div class="parent-card fade-up">
-          <span class="icon">🆘</span>
-          <h4>Emergency Card</h4>
-          <p>Create a card with your child's communication style, calming strategies and contacts — shareable instantly with teachers or doctors.</p>
-        </div>
-        <div class="parent-card fade-up">
-          <span class="icon">🔐</span>
-          <h4>Kiosk / App Lock</h4>
-          <p>Lock the app with a PIN so your child stays focused and cannot accidentally navigate away.</p>
-        </div>
-        <div class="parent-card fade-up">
-          <span class="icon">🌐</span>
-          <h4>12 Language Support</h4>
-          <p>Switch the entire app language in one tap — Hindi, Tamil, Telugu, Bengali and more. Perfect for bilingual families.</p>
-        </div>
+  <!-- Schedule -->
+  <div class="showcase-row showcase-row--reverse reveal">
+    <div class="showcase-screen">
+      <div class="showcase-phone">
+        <img src="images/Screenshot_2026-05-20_at_6_46_53_AM.png" alt="Schedule screen" />
       </div>
     </div>
-  </section>
+    <div class="showcase-text">
+      <div class="showcase-tag">Schedule</div>
+      <h3>Predictable days that reduce anxiety</h3>
+      <p>The Schedule shows every task in time-blocked order — Wake up &amp; stretch, Breakfast, Brush teeth, Feelings check-in, Math practice, English lesson, Snack break — each with its own icon and a checkbox to tap when done. A weekly strip lets children see what's coming, and a Festivals tab marks cultural occasions. Consistent, visual routines build confidence and help children feel safe knowing exactly what happens next.</p>
+      <ul class="showcase-bullets">
+        <li>📅 Day-by-day visual timeline with icons</li>
+        <li>✅ Tap-to-complete checkboxes for every task</li>
+        <li>🪔 Festivals tab with cultural occasions</li>
+      </ul>
+    </div>
+  </div>
 
-  <!-- ── DOWNLOAD ── -->
-  <section class="download-section" id="download">
-    <div class="max-w">
-      <div class="sec-label fade-up" style="justify-content: center">Get started today</div>
-      <h2 class="sec-title fade-up">Download BloomBuddy — free</h2>
-      <p class="sec-sub fade-up" style="margin: 0 auto">Available on iPhone, iPad and Android. No sign-up. No subscription needed to get started.</p>
-      <div class="dl-buttons fade-up">
-        <a class="dl-btn dl-ios" href="https://apps.apple.com" target="_blank" rel="noopener noreferrer">
-          <span class="dl-icon">🍎</span>
-          <div><small>Download on the</small><strong>App Store</strong></div>
+  <!-- Parents Hub -->
+  <div class="showcase-row reveal">
+    <div class="showcase-screen">
+      <div class="showcase-phone">
+        <img src="images/Screenshot_2026-05-20_at_6_47_01_AM.png" alt="Parents screen" />
+      </div>
+    </div>
+    <div class="showcase-text">
+      <div class="showcase-tag">Parents Hub</div>
+      <h3>Tools built for the adults behind the scenes</h3>
+      <p>The Parents section gives caregivers everything they need in one protected space. Switch between child profiles instantly, access Autism Support Videos curated for parents and therapists, build a My People gallery of family and friends with face identification, review Progress Summaries from the Parents Hub, and log observations in the Behaviour Journal. An SOS quick-action sits at the bottom for urgent moments. All of it is locked behind a parent passcode.</p>
+      <ul class="showcase-bullets">
+        <li>🎓 Autism support videos for parents &amp; therapists</li>
+        <li>👥 My People — family face identification</li>
+        <li>📋 Behaviour journal &amp; progress summaries</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- My Stories -->
+  <div class="showcase-row showcase-row--reverse reveal">
+    <div class="showcase-screen">
+      <div class="showcase-phone">
+        <img src="images/Screenshot_2026-05-20_at_6_47_57_AM.png" alt="My Stories screen" />
+      </div>
+    </div>
+    <div class="showcase-text">
+      <div class="showcase-tag">My Stories</div>
+      <h3>Stories that star your child</h3>
+      <p>Social stories are one of the most effective tools for helping children with autism understand new or challenging situations — and My Stories puts the power to create them directly in parents' hands. Tap the + button to build a personalised story using your child's own name, familiar places, and real-life scenarios. Abstract situations become safe, knowable, and less frightening when the main character is someone your child recognises: themselves.</p>
+      <ul class="showcase-bullets">
+        <li>✍️ Create stories with your child's name &amp; places</li>
+        <li>📚 Evidence-based social story format</li>
+        <li>💾 Stories saved on-device, never shared</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="showcase-row reveal">
+    <div class="showcase-screen">
+      <div class="showcase-phone">
+        <img src="images/Screenshot_2026-05-20_at_6_47_10_AM.png" alt="Settings screen" />
+      </div>
+    </div>
+    <div class="showcase-text">
+      <div class="showcase-tag">Settings</div>
+      <h3>Set it up your way, in your language</h3>
+      <p>Settings keeps customisation clean and parent-controlled. Choose the display theme, select any of the 12 supported languages, and toggle Voice (text-to-speech) and Audio on or off to match your child's sensory preferences. Switch between child profiles with a tap. The Help section surfaces the FAQ instantly, and About SproutPath shows version info. Every preference is saved locally on your device — no account syncing, no cloud uploads.</p>
+      <ul class="showcase-bullets">
+        <li>🌐 Switch between 12 languages instantly</li>
+        <li>🔊 Text-to-speech &amp; audio toggles</li>
+        <li>📱 All preferences stored on-device only</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- LANGUAGES -->
+<section class="section" id="languages">
+  <div class="section-header reveal">
+    <div class="section-tag">Supported Languages</div>
+    <h2>Available in 12 languages</h2>
+    <p>SproutPath is fully localised — every screen, prompt, and piece of learning content is available in your family's language.</p>
+  </div>
+  <div class="languages-grid reveal">
+    <div class="language-chip">🇬🇧 English</div>
+    <div class="language-chip">🇮🇳 Telugu</div>
+    <div class="language-chip">🇮🇳 Hindi</div>
+    <div class="language-chip">🇮🇳 Tamil</div>
+    <div class="language-chip">🇮🇳 Kannada</div>
+    <div class="language-chip">🇮🇳 Bengali</div>
+    <div class="language-chip">🇮🇳 Marathi</div>
+    <div class="language-chip">🇮🇳 Gujarati</div>
+    <div class="language-chip">🇮🇳 Malayalam</div>
+    <div class="language-chip">🇮🇳 Punjabi</div>
+    <div class="language-chip">🇮🇳 Odia</div>
+    <div class="language-chip">🇮🇳 Assamese</div>
+  </div>
+</section>
+
+<!-- PRIVACY PROMISE -->
+<section class="section" id="privacy">
+  <div class="section-header reveal">
+    <div class="section-tag">Privacy Promise</div>
+    <h2>Your child's data stays on your device. Always.</h2>
+    <p>We built SproutPath around one principle: parents should never have to wonder where their child's information goes.</p>
+  </div>
+  <div class="privacy-pillars reveal">
+    <div class="privacy-pillar">
+      <div class="privacy-pillar-icon">📵</div>
+      <h3>Stays On-Device</h3>
+      <p>All profiles, progress, memories, and schedules are stored locally on your device. Nothing is uploaded to external servers or shared with any third party — not even us.</p>
+    </div>
+    <div class="privacy-pillar">
+      <div class="privacy-pillar-icon">🚫</div>
+      <h3>Zero Ads. Zero.</h3>
+      <p>SproutPath contains no advertisements, no banners, no sponsored content, and no ad trackers. Your child will never see a single ad. We are funded entirely by subscriptions.</p>
+    </div>
+    <div class="privacy-pillar">
+      <div class="privacy-pillar-icon">🔒</div>
+      <h3>Never Shared or Sold</h3>
+      <p>We do not share, sell, or license your child's data to anyone — no analytics companies, no data brokers, no partners. What happens in SproutPath stays in SproutPath.</p>
+    </div>
+  </div>
+  <div class="privacy-badge reveal">
+    <span>🛡️</span>
+    <p><strong>Parent guarantee:</strong> If we ever change these commitments, you will be notified first and given the option to delete all data before any change takes effect.</p>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="section" id="download">
+  <div class="section-header reveal">
+    <div class="section-tag">Download</div>
+    <h2>Available on iOS &amp; Android</h2>
+    <p>Download SproutPath for free and start your child's journey today. Available on all major devices.</p>
+  </div>
+  <div class="download-block reveal">
+    <div class="download-phones">
+      <img src="images/Screenshot_2026-05-20_at_6_45_49_AM.png" alt="SproutPath on iPhone" class="dl-phone dl-phone-1" />
+      <img src="images/Screenshot_2026-05-20_at_6_46_53_AM.png" alt="SproutPath schedule" class="dl-phone dl-phone-2" />
+    </div>
+    <div class="download-content">
+      <h3>Free to download.<br>Built to last.</h3>
+      <p>Get started with a free account. Access core features at no cost, with optional premium plans for families and therapists.</p>
+      <div class="store-buttons">
+        <a href="#" class="store-btn store-apple">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div>
+            <span class="store-label">Download on the</span>
+            <span class="store-name">App Store</span>
+          </div>
         </a>
-        <a class="dl-btn dl-android" href="https://play.google.com" target="_blank" rel="noopener noreferrer">
-          <span class="dl-icon">▶</span>
-          <div><small>Get it on</small><strong>Google Play</strong></div>
+        <a href="#" class="store-btn store-google">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l12.21-12.21-2.63-2.63L3.18 23.76zm17.22-10.7L17.63 11.5l-2.79 2.79 2.82 2.82 2.74-1.54c.78-.44.78-1.57 0-2.01zM3 .75c-.07.24-.1.5-.1.78v20.94c0 .28.03.54.1.78L15.44 10 3 .75zm10.44 9.25L3.18.24c-.3-.17-.64-.24-.99-.2l12.88 12.88-1.63-3.12z"/></svg>
+          <div>
+            <span class="store-label">Get it on</span>
+            <span class="store-name">Google Play</span>
+          </div>
         </a>
       </div>
-      <p class="dl-note fade-up">iOS 16+ and Android 8+. Available in India 🇮🇳 and Singapore 🇸🇬.</p>
+      <div class="download-note">Free download · Works on iPhone, iPad &amp; Android</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ── FAQ ── -->
-  <section class="faq-section" id="faq">
-    <div class="max-w">
-      <div class="sec-label fade-up">Common questions</div>
-      <h2 class="sec-title fade-up">Everything parents ask</h2>
-
-      <div class="faq-list fade-up">
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Is BloomBuddy free to download? <span class="faq-arrow">▾</span></div>
-          <div class="faq-a">Yes — BloomBuddy is free to download on the App Store and Google Play. Core features are available immediately with no subscription required.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Does BloomBuddy collect my child's personal information? <span class="faq-arrow">▾</span></div>
-          <div class="faq-a">Absolutely not. All data stays only on your device. Nothing is sent anywhere — this is guaranteed by how the app is built, not just a policy.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Can I use BloomBuddy in Hindi or my regional language? <span class="faq-arrow">▾</span></div>
-          <div class="faq-a">Yes! BloomBuddy supports 12 languages including Hindi, Tamil, Telugu, Bengali, Marathi, Gujarati, Kannada, Malayalam, Punjabi, Odia, Assamese and English. Switch in one tap.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Does the app work without internet? <span class="faq-arrow">▾</span></div>
-          <div class="faq-a">Yes. Core features — communication board, schedules, calming tools, emotion learning — work fully offline. Internet is only needed for video streaming and YouTube social stories.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Is BloomBuddy suitable for different ages? <span class="faq-arrow">▾</span></div>
-          <div class="faq-a">BloomBuddy is designed for children broadly aged 3 to 14. Parents can personalise every aspect — symbols, routines, reward system — to suit their child's current abilities. The app grows with your child.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Can multiple children in my family use BloomBuddy? <span class="faq-arrow">▾</span></div>
-          <div class="faq-a">Yes. BloomBuddy supports multiple child profiles on a single device. Each child has their own settings, communication board, progress and rewards.</div>
-        </div>
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-header reveal">
+    <div class="section-tag">FAQ</div>
+    <h2>Frequently asked questions</h2>
+    <p>Everything parents, caregivers and therapists commonly ask about SproutPath.</p>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Who is SproutPath designed for?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>SproutPath is designed for children who benefit from visual structure, routine, and accessible learning tools — including children on the autism spectrum, those with developmental differences, and any child who thrives with clear schedules and positive reinforcement.</p>
       </div>
     </div>
-  </section>
-
-  <!-- ── FOOTER ── -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-bottom">
-        <span>© 2025 BloomBuddy. Made with love for families in India 🇮🇳 and Singapore 🇸🇬.</span>
-        <span>No data collected. No ads. Ever.</span>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Is SproutPath free to use?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Yes — SproutPath is free to download and includes access to core features. Optional premium plans unlock additional study content, unlimited story creation, and advanced parent hub analytics. No credit card is required to get started.</p>
       </div>
     </div>
-  </footer>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Can multiple children use the same account?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Yes. You can create and switch between multiple child profiles within the same parent account. Each profile has its own schedule, progress data, memories, and star chart — completely separate from other profiles.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Is my child's data private and secure?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Absolutely. SproutPath is built on three unbreakable commitments: <strong>your child's data never leaves their device</strong> — all profiles, progress, and memories are stored locally on-device and are never uploaded to external servers or shared with anyone. <strong>There are zero advertisements</strong> — no banners, no targeted ads, no third-party trackers, ever. And <strong>no data is ever sold</strong> — SproutPath is funded entirely by subscriptions, not by your child's information. Sensitive settings are protected by a parent PIN, and you can delete all data at any time from within the app.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Can therapists and educators use SproutPath?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Yes. The Parents Hub includes dedicated autism support videos and resources for therapists and educators. Professional plans are available for clinics and schools that need multi-child management and session tracking tools.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>What languages does SproutPath support?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>SproutPath supports 12 languages: English, Telugu, Hindi, Tamil, Kannada, Bengali, Marathi, Gujarati, Malayalam, Punjabi, Odia, and Assamese. The full interface — including menus, prompts, and study content — is available in each language. Switch languages anytime via Settings → Display Language.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Does the app work offline?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Core features including the daily schedule, activities, study modules, and calm corner work fully offline. Data syncs automatically to the cloud when a connection is restored, so nothing is lost between sessions.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>How do I set up my child's profile?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>After downloading the app, tap "Set up your profile" on the Dashboard. You can add your child's name, photo, and preferred language. Schedules and quick-access shortcuts can be personalised at any time from the Dashboard or Parents section.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- JavaScript -->
-  <script src="js/main.js"></script>
+<!-- BANNER -->
+<div class="banner" id="parents">
+  <div class="banner-inner reveal">
+    <div class="banner-text">
+      <h2>Structured days.<br>Confident kids.</h2>
+      <p>SproutPath wraps structure, calm, and learning into one thoughtful app — supporting children and the families and professionals who care for them.</p>
+    </div>
+    <div class="banner-pills">
+      <div class="banner-pill">🎨 Visual-first design</div>
+      <div class="banner-pill">🔒 Parent-protected settings</div>
+      <div class="banner-pill">🌐 12 languages supported</div>
+      <div class="banner-pill">📱 iOS &amp; Android</div>
+      <div class="banner-pill">♿ Accessibility built-in</div>
+      <div class="banner-pill">🎓 Therapist resources</div>
+    </div>
+  </div>
+</div>
 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-small">🌱 SproutPath</div>
+      <p>Designed with care for every child.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#screens">App screens</a>
+        <a href="#download">Download</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#faq">FAQ</a>
+        <a href="#">Contact us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of use</a>
+        <a href="#">Cookie policy</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 SproutPath. All rights reserved.</span>
+    <div class="footer-stores">
+      <a href="#download" class="footer-store-btn">🍎 App Store</a>
+      <a href="#download" class="footer-store-btn">▶ Google Play</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <img id="modalImg" src="" alt="" />
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-desc" id="modalDesc"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
 </body>
 </html>
