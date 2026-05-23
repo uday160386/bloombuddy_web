@@ -6,6 +6,105 @@
 <title>SproutPath — Learning & Support for Every Child</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
+<style>
+/* ── PERSPECTIVE SWITCHER ─────────────────────── */
+.switcher-bar {
+  position: sticky; top: 66px; z-index: 90;
+  background: rgba(249,247,255,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 2.5rem;
+  display: flex; justify-content: center;
+}
+.perspective-switcher {
+  display: flex;
+  background: var(--purple-light);
+  border-radius: 50px; padding: 4px;
+  width: fit-content;
+}
+.persp-btn {
+  padding: 10px 26px; border-radius: 50px; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 500;
+  transition: all .22s ease;
+  background: transparent; color: var(--muted);
+}
+.persp-btn.active {
+  background: var(--purple); color: #fff;
+  box-shadow: 0 4px 14px rgba(108,92,231,.30);
+}
+.perspective-panel { display: none; }
+.perspective-panel.active { display: block; }
+
+/* ── FEATURE GRID ────────────────────────────── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem; max-width: 1200px; margin: 0 auto;
+}
+.feature-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  transition: transform .22s, box-shadow .22s;
+  position: relative; overflow: hidden;
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.feature-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  border-radius: 3px 3px 0 0;
+  transform: scaleX(0); transform-origin: left; transition: transform .3s;
+}
+.feature-card:hover::before { transform: scaleX(1); }
+.feature-card-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 1rem;
+}
+.feature-card h3 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.feature-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+.feature-card-label {
+  display: inline-block; padding: 3px 10px; border-radius: 50px;
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--purple-light); color: var(--purple);
+  margin-bottom: 10px;
+}
+.feature-bullets-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.feature-bullets-list li {
+  font-size: 13px; color: var(--muted); padding-left: 18px; position: relative;
+}
+.feature-bullets-list li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--purple); font-weight: 700;
+}
+
+/* ── COMPARE TABLE ───────────────────────────── */
+.compare-wrap { max-width: 900px; margin: 0 auto; overflow-x: auto; }
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th, .compare-table td {
+  padding: 13px 18px; text-align: left;
+  border-bottom: 1px solid var(--border); font-size: 14px;
+}
+.compare-table th {
+  font-weight: 600; background: var(--purple-light);
+  font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em;
+}
+.compare-table td:first-child { font-weight: 500; color: var(--text); }
+.tbl-yes { color: var(--purple); font-weight: 700; }
+.tbl-no  { color: var(--muted); }
+
+/* ── PANEL INTRO ─────────────────────────────── */
+.panel-intro {
+  max-width: 1200px; margin: 0 auto; padding: 3rem 2.5rem 0;
+  text-align: center;
+}
+.panel-intro h2 { font-family: 'Fraunces', serif; font-size: clamp(24px,3vw,36px); font-weight: 700; color: var(--text); margin-bottom: 0.75rem; }
+.panel-intro p { font-size: 16px; color: var(--muted); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+</style>
 </head>
 <body>
 
@@ -17,6 +116,7 @@
   </div>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
+    <li><a href="#privacy">Privacy</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#download">Download</a></li>
   </ul>
@@ -45,162 +145,667 @@
 <!-- STATS -->
 <div class="stats-strip">
   <div class="stat-card reveal">
-    <div class="stat-icon" style="background:#EDE9FF;">🎯</div>
-    <div><h3>8 Modules</h3><p>Covering daily life, learning &amp; calm</p></div>
+    <div class="stat-icon" style="background:#EDE9FF;">👧</div>
+    <div><h3>40+ Child Features</h3><p>Across 6 tabs and 12 modules</p></div>
   </div>
   <div class="stat-card reveal">
-    <div class="stat-icon" style="background:#FFF0F6;">💜</div>
-    <div><h3>Child-first</h3><p>Visual, accessible, sensory-aware design</p></div>
+    <div class="stat-icon" style="background:#FFF0F6;">👨‍👩‍👧</div>
+    <div><h3>20+ Parent Tools</h3><p>PIN-protected, on-device, private</p></div>
   </div>
   <div class="stat-card reveal">
     <div class="stat-icon" style="background:#E8F5E9;">🌍</div>
-    <div><h3>12 Languages</h3><p>Full interface &amp; content localisation</p></div>
+    <div><h3>12 Languages</h3><p>Full UI &amp; content localisation</p></div>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-icon" style="background:#E0F4FF;">🔒</div>
+    <div><h3>Zero Cloud Upload</h3><p>All data stays on your device</p></div>
   </div>
 </div>
 
-<!-- SCREENS -->
-<!-- FEATURES + SCREENS COMBINED -->
-<section class="section" id="features">
-  <div class="section-header reveal">
-    <div class="section-tag">Tools that make a real difference</div>
-    <h2>Everything in one place</h2>
-    <p>Every screen is thoughtfully designed to support daily life, build real skills, and nurture wellbeing — for children and the adults who care for them.</p>
+<!-- ── PERSPECTIVE SWITCHER BAR ── -->
+<div class="switcher-bar">
+  <div class="perspective-switcher">
+    <button class="persp-btn active" onclick="switchPerspective('child', this)">👧 Child View</button>
+    <button class="persp-btn" onclick="switchPerspective('parent', this)">👨‍👩‍👧 Parent View</button>
+    <button class="persp-btn" onclick="switchPerspective('both', this)">📊 All Features</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  CHILD PERSPECTIVE                                     -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="panel-child" class="perspective-panel active">
+
+  <div class="panel-intro reveal">
+    <div class="section-tag">Child Experience</div>
+    <h2>What your child sees &amp; does</h2>
+    <p>SproutPath's child interface is calm, colourful, and completely distraction-free — designed so children can navigate independently with confidence.</p>
   </div>
 
-  <!-- Dashboard -->
-  <div class="showcase-row reveal">
-    <div class="showcase-screen">
-      <div class="showcase-phone">
-        <img src="images/Screenshot_2026-05-20_at_6_45_49_AM.png" alt="Dashboard screen" />
+  <section class="section" id="features">
+
+    <!-- Dashboard -->
+    <div class="showcase-row reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_45_49_AM.png" alt="Dashboard screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Dashboard</div>
+        <h3>A calm home base built just for them</h3>
+        <p>When your child opens SproutPath, they're greeted by their name, photo, and today's star count. Quick-access tiles give instant entry to every corner of the app — no menus, no confusion.</p>
+        <ul class="showcase-bullets">
+          <li>⚡ Up to 8 customisable Quick Access tiles, reorderable by parent or child</li>
+          <li>⭐ Live star chart — today's earned stars shown at a glance</li>
+          <li>📸 My Memories strip — a horizontal gallery of saved moments</li>
+          <li>👤 Personal profile card with photo avatar, name, age &amp; favourite colour</li>
+        </ul>
       </div>
     </div>
-    <div class="showcase-text">
-      <div class="showcase-tag">Dashboard</div>
-      <h3>Your child's world, at a glance</h3>
-      <p>The Dashboard is your child's home base — a calm, colourful hub with quick access to Emotions, Study, Activities, Schedule, Calm Corner, My Map, and Parents Hub. The star chart banner celebrates each day's wins, and My Memories sits ready to capture special moments. Everything your child needs is one tap away, with no clutter and no confusion.</p>
-      <ul class="showcase-bullets">
-        <li>⚡ Fully customisable Quick Access shortcuts</li>
-        <li>⭐ Live star chart progress at a glance</li>
-        <li>📸 Memories gallery built right in</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- Study -->
-  <div class="showcase-row showcase-row--reverse reveal">
-    <div class="showcase-screen">
-      <div class="showcase-phone">
-        <img src="images/Screenshot_2026-05-20_at_6_46_35_AM.png" alt="Study screen" />
+    <!-- Emotions -->
+    <div class="showcase-row showcase-row--reverse reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_46_45_AM.png" alt="Emotions screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Emotions</div>
+        <h3>Understanding feelings, step by step</h3>
+        <p>The Emotions module helps children recognise, name, and respond to their own feelings and others'. Built around evidence-based methods used in autism therapy.</p>
+        <ul class="showcase-bullets">
+          <li>😊 Daily Emotion Check-in — visual picker to log how they feel</li>
+          <li>🪞 Mirror Mode — front camera so children practise expressions safely</li>
+          <li>✨ Identify Emotions AI — camera detects facial expressions in real time</li>
+          <li>📚 Social Stories Library — pre-built stories for school, sharing &amp; change</li>
+          <li>⏱️ 6-Second Rule — guided breathing pause before reacting to big feelings</li>
+          <li>✍️ My Stories (Custom) — personalised stories created by parents</li>
+          <li>💭 Worries Box — a private journal for logging fears and anxieties</li>
+        </ul>
       </div>
     </div>
-    <div class="showcase-text">
-      <div class="showcase-tag">Study</div>
-      <h3>Learning built for every child's pace</h3>
-      <p>The Study screen organises subjects into two clear groups: Numbers &amp; Logic — covering Math, Measurements, and Currency — and Language &amp; Stories, with English and Mother Tongue modules. Each topic is broken into short, accessible steps designed for children who learn differently. Content is available in all 12 supported languages so every lesson feels familiar and achievable.</p>
-      <ul class="showcase-bullets">
-        <li>🔢 Math, Measurements &amp; Currency modules</li>
-        <li>📖 English &amp; Mother Tongue language learning</li>
-        <li>🌐 Available in 12 Indian languages</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- Activities -->
-  <div class="showcase-row reveal">
-    <div class="showcase-screen">
-      <div class="showcase-phone">
-        <img src="images/Screenshot_2026-05-20_at_6_46_45_AM.png" alt="Activities screen" />
+    <!-- Study -->
+    <div class="showcase-row reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_46_35_AM.png" alt="Study screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Study</div>
+        <h3>Learning at their pace, in their language</h3>
+        <p>Study is organised into two clear groups — Numbers &amp; Logic and Language &amp; Stories — so children can work through subjects at a manageable pace. All content adapts to the app's active language.</p>
+        <ul class="showcase-bullets">
+          <li>🔢 Math &amp; Numbers — counting, addition, subtraction, multiplication tables</li>
+          <li>📏 Measurements — length, weight, volume, and time with visual aids</li>
+          <li>💰 Currency &amp; Kiddy Bank — learn money with an interactive bank simulation</li>
+          <li>📖 English Lessons — alphabet, phonics, word recognition &amp; sentence-building</li>
+          <li>🔤 Mother Tongue — reading and vocabulary in Telugu, Hindi, Tamil &amp; 9 more</li>
+          <li>🔬 Science Discovery — age-appropriate concepts with illustrations</li>
+          <li>🎤 Speaking Practice — guided prompts for verbal communication</li>
+          <li>🎴 Flashcards — vocabulary, sight words &amp; concepts as flip-card drills</li>
+        </ul>
       </div>
     </div>
-    <div class="showcase-text">
-      <div class="showcase-tag">Activities</div>
-      <h3>Mind, body, and creativity — all in one place</h3>
-      <p>Activities is organised into three categories so finding the right outlet is always easy. Mind &amp; Body includes Yoga &amp; Exercise, the Calm Corner, the 6-Second Rule emotional regulation tool, Mirror Mode for self-awareness, and Devotional practices. Sports covers All Sports and Skating &amp; More. Creative activities bring painting, colouring, and craft to life — giving every child a way to express, move, and recharge.</p>
-      <ul class="showcase-bullets">
-        <li>🧘 Yoga, Calm Corner &amp; 6-Second Rule</li>
-        <li>⚽ Sports activities including Skating</li>
-        <li>🎨 Creative: painting, colouring &amp; more</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- Schedule -->
-  <div class="showcase-row showcase-row--reverse reveal">
-    <div class="showcase-screen">
-      <div class="showcase-phone">
-        <img src="images/Screenshot_2026-05-20_at_6_46_53_AM.png" alt="Schedule screen" />
+    <!-- Activities -->
+    <div class="showcase-row showcase-row--reverse reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_46_45_AM.png" alt="Activities screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Activities</div>
+        <h3>Move, create, and find their calm</h3>
+        <p>Activities is grouped into three clear categories so children always know where to find what they need — whether they want to move, create, or simply wind down.</p>
+        <ul class="showcase-bullets">
+          <li>🧘 Yoga &amp; Exercise Videos — child-friendly sequences and physical guides</li>
+          <li>🌬️ Calm Corner — breathing animations, calming sounds &amp; grounding exercises</li>
+          <li>🖍️ Colouring Canvas — digital pages to fill with fingers or stylus</li>
+          <li>🍳 Cooking Videos — simple, safe activities demonstrated step by step</li>
+          <li>⚽ Sports &amp; Physical Activities — cricket, swimming, badminton, skating &amp; more</li>
+          <li>🙏 Devotional — content in 9 Indian languages for spiritual routines</li>
+          <li>🎴 Flashcard Learning Games — vocabulary, shapes, colours &amp; concepts</li>
+        </ul>
       </div>
     </div>
-    <div class="showcase-text">
-      <div class="showcase-tag">Schedule</div>
-      <h3>Predictable days that reduce anxiety</h3>
-      <p>The Schedule shows every task in time-blocked order — Wake up &amp; stretch, Breakfast, Brush teeth, Feelings check-in, Math practice, English lesson, Snack break — each with its own icon and a checkbox to tap when done. A weekly strip lets children see what's coming, and a Festivals tab marks cultural occasions. Consistent, visual routines build confidence and help children feel safe knowing exactly what happens next.</p>
-      <ul class="showcase-bullets">
-        <li>📅 Day-by-day visual timeline with icons</li>
-        <li>✅ Tap-to-complete checkboxes for every task</li>
-        <li>🪔 Festivals tab with cultural occasions</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- Parents Hub -->
-  <div class="showcase-row reveal">
-    <div class="showcase-screen">
-      <div class="showcase-phone">
-        <img src="images/Screenshot_2026-05-20_at_6_47_01_AM.png" alt="Parents screen" />
+    <!-- Schedule -->
+    <div class="showcase-row reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_46_53_AM.png" alt="Schedule screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Schedule</div>
+        <h3>Predictable days that reduce anxiety</h3>
+        <p>A visual, time-blocked schedule lets children see exactly what comes next. Tapping a task marks it complete, building a sense of accomplishment throughout the day.</p>
+        <ul class="showcase-bullets">
+          <li>📅 Visual Day Timeline — time-blocked tasks with icons in order</li>
+          <li>✅ Tap-to-Complete Checkboxes — children check off tasks themselves</li>
+          <li>🗓️ Weekly View — swipe through the week to see upcoming days</li>
+          <li>🪔 Festivals Calendar — cultural occasions appear automatically</li>
+          <li>🔔 Schedule Notifications — gentle reminders so nothing is missed</li>
+          <li>📋 Daily Routine Checklist — separate morning &amp; evening checklists</li>
+          <li>🔀 First-Then Board — visual prompt showing what's next after a task</li>
+          <li>🎯 Choice Board — let children pick between approved options</li>
+        </ul>
       </div>
     </div>
-    <div class="showcase-text">
-      <div class="showcase-tag">Parents Hub</div>
-      <h3>Tools built for the adults behind the scenes</h3>
-      <p>The Parents section gives caregivers everything they need in one protected space. Switch between child profiles instantly, access Autism Support Videos curated for parents and therapists, build a My People gallery of family and friends with face identification, review Progress Summaries from the Parents Hub, and log observations in the Behaviour Journal. An SOS quick-action sits at the bottom for urgent moments. All of it is locked behind a parent passcode.</p>
-      <ul class="showcase-bullets">
-        <li>🎓 Autism support videos for parents &amp; therapists</li>
-        <li>👥 My People — family face identification</li>
-        <li>📋 Behaviour journal &amp; progress summaries</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- My Stories -->
-  <div class="showcase-row showcase-row--reverse reveal">
-    <div class="showcase-screen">
-      <div class="showcase-phone">
-        <img src="images/Screenshot_2026-05-20_at_6_47_57_AM.png" alt="My Stories screen" />
+    <!-- Videos & Explore -->
+    <div class="showcase-row showcase-row--reverse reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_47_57_AM.png" alt="Videos screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Videos &amp; Explore</div>
+        <h3>See the world from the safety of home</h3>
+        <p>The Videos tab and Explore section give children a rich, safe window into learning through visual content — from skill-building demonstrations to virtual world tours.</p>
+        <ul class="showcase-bullets">
+          <li>🎬 Educational Video Library — curated across yoga, social skills, cooking &amp; more</li>
+          <li>🌍 Virtual Tours — explore world landmarks, monuments &amp; museums</li>
+          <li>🏛️ Places Explorer — discover zoos, parks &amp; cultural sites</li>
+          <li>🎭 Video Modeling — watch children demonstrate daily life skills step by step</li>
+          <li>🗺️ Kids Navigation (Singapore) — child-friendly map of nearby safe spaces</li>
+        </ul>
       </div>
     </div>
-    <div class="showcase-text">
-      <div class="showcase-tag">My Stories</div>
-      <h3>Stories that star your child</h3>
-      <p>Social stories are one of the most effective tools for helping children with autism understand new or challenging situations — and My Stories puts the power to create them directly in parents' hands. Tap the + button to build a personalised story using your child's own name, familiar places, and real-life scenarios. Abstract situations become safe, knowable, and less frightening when the main character is someone your child recognises: themselves.</p>
-      <ul class="showcase-bullets">
-        <li>✍️ Create stories with your child's name &amp; places</li>
-        <li>📚 Evidence-based social story format</li>
-        <li>💾 Stories saved on-device, never shared</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- Settings -->
-  <div class="showcase-row reveal">
-    <div class="showcase-screen">
-      <div class="showcase-phone">
-        <img src="images/Screenshot_2026-05-20_at_6_47_10_AM.png" alt="Settings screen" />
+    <!-- Wellbeing -->
+    <div class="showcase-row reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_47_10_AM.png" alt="Wellbeing screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Wellbeing</div>
+        <h3>Calm tools for big feelings</h3>
+        <p>When emotions run high, the Calm Corner gives children a soft landing — guided techniques, visual tools, and a rewards system that makes progress visible and rewarding.</p>
+        <ul class="showcase-bullets">
+          <li>🌬️ Calm Corner — breathing animations, calming sounds &amp; sensory exercises</li>
+          <li>⏱️ Visual Timer — a colour-draining circle shows time passing</li>
+          <li>⭐ Stars &amp; Rewards — earn stars for completing tasks; view the star chart</li>
+          <li>📷 My Memories — capture and save photos of happy moments</li>
+          <li>💬 AAC Communication Board — symbol board for non-verbal expression</li>
+          <li>🎙️ Voice Chat Assistant — conversational AI for thoughts children can't verbalise</li>
+        </ul>
       </div>
     </div>
-    <div class="showcase-text">
-      <div class="showcase-tag">Settings</div>
-      <h3>Set it up your way, in your language</h3>
-      <p>Settings keeps customisation clean and parent-controlled. Choose the display theme, select any of the 12 supported languages, and toggle Voice (text-to-speech) and Audio on or off to match your child's sensory preferences. Switch between child profiles with a tap. The Help section surfaces the FAQ instantly, and About SproutPath shows version info. Every preference is saved locally on your device — no account syncing, no cloud uploads.</p>
-      <ul class="showcase-bullets">
-        <li>🌐 Switch between 12 languages instantly</li>
-        <li>🔊 Text-to-speech &amp; audio toggles</li>
-        <li>📱 All preferences stored on-device only</li>
-      </ul>
+
+  </section>
+
+  <!-- Child Feature Cards -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-tag">All Child Features</div>
+      <h2>Every tool your child has access to</h2>
     </div>
+    <div class="feature-grid">
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#EDE9FF;">😊</div>
+        <div class="feature-card-label">Emotions</div>
+        <h3>Feelings Hub</h3>
+        <p>Daily check-in, emotion library, mirror practice, AI face detection, and the 6-second regulation technique.</p>
+        <ul class="feature-bullets-list">
+          <li>Emotion check-in with visual picker</li>
+          <li>Mirror Mode (front camera)</li>
+          <li>AI Identify Emotions</li>
+          <li>6-Second Rule breathing pause</li>
+          <li>Feelings Check-in card</li>
+          <li>Worries Box for journalling fears</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#FFF8E1;">🎓</div>
+        <div class="feature-card-label" style="background:#FFF8E1;color:#B8860B;">Study</div>
+        <h3>Learning Modules</h3>
+        <p>Six subject areas covering numeracy, language, and science — all accessible in 12 languages.</p>
+        <ul class="feature-bullets-list">
+          <li>Math practice &amp; multiplication tables</li>
+          <li>English alphabet &amp; phonics</li>
+          <li>Mother Tongue in 12 languages</li>
+          <li>Science concepts &amp; discovery</li>
+          <li>Currency &amp; money learning</li>
+          <li>Measurements with visuals</li>
+          <li>Speaking practice with prompts</li>
+          <li>Flashcard drill games</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#E3F2FD;">🏃</div>
+        <div class="feature-card-label" style="background:#E3F2FD;color:#1565C0;">Activities</div>
+        <h3>Move &amp; Create</h3>
+        <p>Mind &amp; body, creative, social, and sports activities — all presented through visual, video-led content.</p>
+        <ul class="feature-bullets-list">
+          <li>Yoga &amp; exercise videos</li>
+          <li>Digital colouring canvas</li>
+          <li>Cooking activity videos</li>
+          <li>Sports: cricket, swimming, skating</li>
+          <li>Social skills video guides</li>
+          <li>Devotional content (9 languages)</li>
+          <li>Flashcard learning games</li>
+          <li>Kiddy Bank simulation</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#FFF0E8;">📅</div>
+        <div class="feature-card-label" style="background:#FFF0E8;color:#C4633A;">Schedule</div>
+        <h3>Daily Routine</h3>
+        <p>Visual timeline of the whole day so children always know what comes next and can track their own progress.</p>
+        <ul class="feature-bullets-list">
+          <li>Time-blocked visual schedule</li>
+          <li>Tap-to-complete checkboxes</li>
+          <li>Weekly strip view</li>
+          <li>Festivals &amp; cultural calendar</li>
+          <li>Daily routine checklists</li>
+          <li>Schedule notifications</li>
+          <li>First-Then board</li>
+          <li>Choice Board</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#EDE9FF;">🎬</div>
+        <div class="feature-card-label">Videos &amp; Explore</div>
+        <h3>Discover &amp; Watch</h3>
+        <p>Safe, curated content — educational videos, virtual world tours, and a skill-modelling library.</p>
+        <ul class="feature-bullets-list">
+          <li>Educational video library</li>
+          <li>Virtual global tours</li>
+          <li>Places &amp; attractions explorer</li>
+          <li>Video modeling (skill demos)</li>
+          <li>Kids Navigation map (SG)</li>
+          <li>Social skills videos</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#E0F7F4;">🌬️</div>
+        <div class="feature-card-label" style="background:#E0F7F4;color:#00897B;">Wellbeing</div>
+        <h3>Calm &amp; Rewards</h3>
+        <p>Tools to regulate emotions, mark time visually, and celebrate every achievement with stars.</p>
+        <ul class="feature-bullets-list">
+          <li>Calm Corner with guided breathing</li>
+          <li>Visual timer (circle countdown)</li>
+          <li>Stars &amp; rewards system</li>
+          <li>My Memories photo album</li>
+          <li>AAC symbol communication board</li>
+          <li>Voice chat assistant</li>
+          <li>Social Stories library</li>
+          <li>Custom My Stories</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  PARENT PERSPECTIVE                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="panel-parent" class="perspective-panel">
+
+  <div class="panel-intro reveal">
+    <div class="section-tag">Parent Experience</div>
+    <h2>Everything parents and caregivers control</h2>
+    <p>The parent side of SproutPath is a protected, comprehensive hub for monitoring, configuring, and supporting your child's journey — PIN-locked and completely private.</p>
   </div>
 
-</section>
+  <section class="section">
+
+    <!-- Parents Hub -->
+    <div class="showcase-row reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_47_01_AM.png" alt="Parents Hub screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Parents Hub</div>
+        <h3>One protected space for everything parent-related</h3>
+        <p>The Parents Hub is a dedicated PIN-locked section giving caregivers full visibility and control — progress tracking, content management, child safety, and specialist resources, all in one place.</p>
+        <ul class="showcase-bullets">
+          <li>👨‍👩‍👧 Progress Summary Dashboard — see which sections your child has visited</li>
+          <li>👤 Multi-Profile Management — add, switch &amp; manage a profile per child</li>
+          <li>🔒 PIN-Protected Parent Mode — 4-digit passcode gates all adult tools</li>
+          <li>📸 Family Photo Banner — upload a family photo as the hub banner</li>
+          <li>📝 Handoff Notes — leave notes for other caregivers between sessions</li>
+          <li>🎯 Goal-Setting — set and track developmental milestones per child</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Behaviour Journal -->
+    <div class="showcase-row showcase-row--reverse reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_47_01_AM.png" alt="Behaviour Journal screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Behaviour Journal</div>
+        <h3>Spot patterns before they become crises</h3>
+        <p>Log difficult moments with trigger, severity, resolution, location and duration. After two or more weeks, a pattern heatmap reveals the time-of-day and day-of-week trends — invaluable for therapists and carers.</p>
+        <ul class="showcase-bullets">
+          <li>📝 Detailed Entry Logging — trigger, severity (1–5), resolution, location &amp; duration</li>
+          <li>🔥 Pattern Heatmap — after 2+ weeks, visualise highest-risk days &amp; times</li>
+          <li>📊 Severity Colour Coding — entries colour-coded green → red at a glance</li>
+          <li>🔒 On-Device Only — journal entries never uploaded or shared</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Emergency Card -->
+    <div class="showcase-row reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_47_01_AM.png" alt="Emergency Card screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Emergency Card</div>
+        <h3>Critical information, ready when it matters most</h3>
+        <p>A one-screen card parents can show to teachers, doctors, strangers, and emergency responders. Exportable as an image or PDF so it's always within reach.</p>
+        <ul class="showcase-bullets">
+          <li>👦 Child Identity Info — name, age, diagnosis &amp; photo in one glanceable format</li>
+          <li>💬 Communication Style — explain how your child communicates to responders</li>
+          <li>😌 Calming Strategies &amp; Do-Nots — critical for de-escalation in public</li>
+          <li>📞 2 Emergency Contacts + Doctor — primary, backup &amp; medical professional</li>
+          <li>📤 Export as Image or PDF — printable for school bags and wallets</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sensory Profile -->
+    <div class="showcase-row showcase-row--reverse reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_47_10_AM.png" alt="Sensory Profile screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Sensory Profile</div>
+        <h3>Document your child's sensory world</h3>
+        <p>Map your child's sensory sensitivities across 7 senses on a 3-point scale. The resulting visual profile card can be shared with teachers, therapists, and carers instantly.</p>
+        <ul class="showcase-bullets">
+          <li>🗺️ 7-Sense Assessment — sound, touch, sight, smell, taste, movement &amp; body awareness</li>
+          <li>📊 3-Point Scale — rate each sense as Sensitive, Neutral, or Seeking</li>
+          <li>📤 Shareable Profile Card — screenshot and share instantly</li>
+          <li>✏️ Free-Text Notes Per Sense — add specific examples beyond the rating</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- My People & AAC -->
+    <div class="showcase-row reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_47_57_AM.png" alt="My People screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">My People &amp; AAC</div>
+        <h3>Build a world of familiar, recognisable faces</h3>
+        <p>Parents upload photos of family members and label them. Children can then use the camera to identify who is near them — a calming, familiar anchor in new situations.</p>
+        <ul class="showcase-bullets">
+          <li>👨‍👩‍👧‍👦 Family Faces Gallery — upload &amp; label family, friends, teachers &amp; carers</li>
+          <li>📷 Live Face Identification — point the camera to identify the person</li>
+          <li>🗂️ AAC Symbol Board Builder — add, edit &amp; organise communication symbols</li>
+          <li>✏️ Custom Social Stories Creator — build stories with the child's name &amp; scenarios</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Settings & Security -->
+    <div class="showcase-row showcase-row--reverse reveal">
+      <div class="showcase-screen">
+        <div class="showcase-phone">
+          <img src="images/Screenshot_2026-05-20_at_6_47_10_AM.png" alt="Settings screen" />
+        </div>
+      </div>
+      <div class="showcase-text">
+        <div class="showcase-tag">Settings &amp; Security</div>
+        <h3>Full control in the parent's hands</h3>
+        <p>Every setting that affects the child experience is controlled by the parent. From language and theme to audio preferences and app-locking, parents configure once and the child experiences stability.</p>
+        <ul class="showcase-bullets">
+          <li>🔒 PIN-Locked Parent Mode — tap "Parent Mode" and enter your PIN</li>
+          <li>🔑 Guided Access Integration — pairs with iOS to prevent children leaving the app</li>
+          <li>🌐 Language Switching — change the app language for the whole family instantly</li>
+          <li>🌙 Display Themes — light, dark, and high-contrast modes</li>
+          <li>🔊 Voice &amp; Audio Controls — toggle text-to-speech &amp; background audio independently</li>
+          <li>🔔 Schedule Notifications — configure time slots for gentle daily reminders</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Parent Feature Cards -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-tag">All Parent Features</div>
+      <h2>The complete parent toolkit</h2>
+    </div>
+    <div class="feature-grid">
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#EDE9FF;">👨‍👩‍👧</div>
+        <div class="feature-card-label">Parents Hub</div>
+        <h3>Control Centre</h3>
+        <p>The single parent-only hub with progress overview, family photo, profile management, and access to all parent tools.</p>
+        <ul class="feature-bullets-list">
+          <li>Progress summary &amp; child activity overview</li>
+          <li>Multi-child profile switching</li>
+          <li>Family photo banner upload</li>
+          <li>PIN-protected parent mode</li>
+          <li>Handoff notes between caregivers</li>
+          <li>Screen time limit settings</li>
+          <li>Goal-setting for child milestones</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#FFF0E8;">📋</div>
+        <div class="feature-card-label" style="background:#FFF0E8;color:#C4633A;">Behaviour Journal</div>
+        <h3>Trigger &amp; Pattern Tracker</h3>
+        <p>Log incidents with context; the heatmap reveals when and where difficult moments cluster over time.</p>
+        <ul class="feature-bullets-list">
+          <li>Log trigger, severity 1–5, resolution</li>
+          <li>Location tagging (home/school/public)</li>
+          <li>Duration recording in minutes</li>
+          <li>Free-text notes</li>
+          <li>Pattern heatmap (2+ weeks)</li>
+          <li>Severity colour-coded list view</li>
+          <li>Stored entirely on-device</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#FFE8E8;">🆘</div>
+        <div class="feature-card-label" style="background:#FFE8E8;color:#C0392B;">Emergency Card</div>
+        <h3>SOS Information Card</h3>
+        <p>A printable card with the child's key info, contacts, and communication needs for emergency situations.</p>
+        <ul class="feature-bullets-list">
+          <li>Child name, age, photo, diagnosis</li>
+          <li>Communication style description</li>
+          <li>Calming strategies list</li>
+          <li>Do-Not-Do list</li>
+          <li>2 emergency contacts + doctor</li>
+          <li>Export as image or PDF</li>
+          <li>Linked to child profile</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#E3F2FD;">👂</div>
+        <div class="feature-card-label" style="background:#E3F2FD;color:#1565C0;">Sensory Profile</div>
+        <h3>7-Sense Assessment</h3>
+        <p>Document your child's sensory sensitivities and share the visual profile with anyone who cares for them.</p>
+        <ul class="feature-bullets-list">
+          <li>Sound, touch, sight, smell, taste</li>
+          <li>Movement &amp; body awareness senses</li>
+          <li>Sensitive / Neutral / Seeking scale</li>
+          <li>Notes field per sense</li>
+          <li>Shareable visual profile card</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#E8F5E9;">👨‍👩‍👧‍👦</div>
+        <div class="feature-card-label" style="background:#E8F5E9;color:#2E7D32;">My People</div>
+        <h3>Family Face Gallery</h3>
+        <p>Build a gallery of familiar faces the child can identify using the camera — grounding and reassuring.</p>
+        <ul class="feature-bullets-list">
+          <li>Upload &amp; label family photos</li>
+          <li>Live camera face identification</li>
+          <li>Unlimited people in gallery</li>
+          <li>All stored on-device only</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#EDE9FF;">🔒</div>
+        <div class="feature-card-label">Security</div>
+        <h3>App Lock &amp; Kiosk Mode</h3>
+        <p>PIN protection and iOS Guided Access integration to keep the app child-safe at all times.</p>
+        <ul class="feature-bullets-list">
+          <li>4-digit parent PIN</li>
+          <li>Guided Access integration (iOS)</li>
+          <li>Lock App Now button</li>
+          <li>PIN change from parent settings</li>
+          <li>Child/Parent mode toggle</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#FFF0F6;">🎓</div>
+        <div class="feature-card-label" style="background:#FFF0F6;color:#C2185B;">Resources</div>
+        <h3>Autism Support Videos</h3>
+        <p>A curated library of educational videos for parents, caregivers, and therapists — in parent mode only.</p>
+        <ul class="feature-bullets-list">
+          <li>Therapist-curated video library</li>
+          <li>Accessible in Parent Hub only</li>
+          <li>Covers strategies &amp; techniques</li>
+          <li>Custom video library management</li>
+        </ul>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-card-icon" style="background:#FFF8E1;">📅</div>
+        <div class="feature-card-label" style="background:#FFF8E1;color:#B8860B;">Schedule Builder</div>
+        <h3>Create &amp; Manage Routines</h3>
+        <p>Add, edit, and organise daily activities so your child always has a clear and consistent day structure.</p>
+        <ul class="feature-bullets-list">
+          <li>Add custom activities with title &amp; time</li>
+          <li>Set recurring or one-off events</li>
+          <li>Choose from templates or build custom</li>
+          <li>Notification time slot configuration</li>
+          <li>Daily Routine checklist editing</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  ALL FEATURES COMPARISON                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="panel-both" class="perspective-panel">
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-tag">Full Comparison</div>
+      <h2>Every feature at a glance</h2>
+      <p>See which features are available to children, parents, or both — and what makes each one unique to SproutPath.</p>
+    </div>
+    <div class="compare-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Module</th>
+            <th>Child 👧</th>
+            <th>Parent 👨‍👩‍👧</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Dashboard with Quick Access tiles</td><td>Dashboard</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Customisable Quick Access shortcuts</td><td>Dashboard</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓ (configure)</td></tr>
+          <tr><td>Star chart &amp; rewards tracking</td><td>Dashboard</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓ (overview)</td></tr>
+          <tr><td>My Memories photo album</td><td>Dashboard</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓ (manage)</td></tr>
+          <tr><td>Personal profile card</td><td>Profile</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓ (edit)</td></tr>
+          <tr><td>Daily emotion check-in</td><td>Emotions</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Mirror Mode (front camera)</td><td>Emotions</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>AI Identify Emotions (face detection)</td><td>Emotions</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>6-Second Rule breathing technique</td><td>Emotions</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Social Stories library</td><td>Emotions</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Feelings Check-in card</td><td>Emotions</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Worries Box journalling</td><td>Emotions</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Custom My Stories creator</td><td>Emotions</td><td class="tbl-yes">✓ (read)</td><td class="tbl-yes">✓ (create)</td></tr>
+          <tr><td>Math practice &amp; tables</td><td>Study</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>English alphabet &amp; phonics</td><td>Study</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Mother Tongue (12 languages)</td><td>Study</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Science discovery</td><td>Study</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Currency &amp; Kiddy Bank</td><td>Study</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Measurements</td><td>Study</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Speaking practice</td><td>Study</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Flashcard drill games</td><td>Study</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Yoga &amp; exercise videos</td><td>Activities</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Calm Corner</td><td>Activities</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Digital colouring canvas</td><td>Activities</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Cooking activity videos</td><td>Activities</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Sports videos</td><td>Activities</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Devotional content (9 languages)</td><td>Activities</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Social skills videos</td><td>Activities</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Visual schedule / day timeline</td><td>Schedule</td><td class="tbl-yes">✓ (view)</td><td class="tbl-yes">✓ (build)</td></tr>
+          <tr><td>Tap-to-complete task checkboxes</td><td>Schedule</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Festivals calendar</td><td>Schedule</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Daily Routine checklist</td><td>Schedule</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓ (edit)</td></tr>
+          <tr><td>First-Then board</td><td>Schedule</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓ (set up)</td></tr>
+          <tr><td>Choice Board</td><td>Schedule</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓ (configure)</td></tr>
+          <tr><td>Schedule notifications</td><td>Schedule</td><td class="tbl-yes">✓ (receive)</td><td class="tbl-yes">✓ (configure)</td></tr>
+          <tr><td>Visual Timer</td><td>Tools</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Educational video library</td><td>Videos</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓ (manage)</td></tr>
+          <tr><td>Virtual Tours</td><td>Explore</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Places explorer</td><td>Explore</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Video Modeling</td><td>Explore</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Kids Navigation map (SG only)</td><td>Explore</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>AAC symbol communication board</td><td>Communication</td><td class="tbl-yes">✓ (use)</td><td class="tbl-yes">✓ (build)</td></tr>
+          <tr><td>Voice chat assistant</td><td>Communication</td><td class="tbl-yes">✓</td><td class="tbl-no">—</td></tr>
+          <tr><td>Sentence strip builder</td><td>Communication</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Parents Hub dashboard</td><td>Parent</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Behaviour Journal</td><td>Parent</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Emergency Card builder &amp; export</td><td>Parent</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Sensory Profile builder</td><td>Parent</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Family Faces gallery</td><td>Parent</td><td class="tbl-yes">✓ (view)</td><td class="tbl-yes">✓ (manage)</td></tr>
+          <tr><td>Autism Support Videos</td><td>Parent</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Multi-child profile management</td><td>Parent</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>PIN lock / Guided Access</td><td>Security</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Language switching (12 languages)</td><td>Settings</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Display themes (light/dark/contrast)</td><td>Settings</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Text-to-speech toggle</td><td>Settings</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Audio on/off toggle</td><td>Settings</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>Family photo banner</td><td>Settings</td><td class="tbl-no">—</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>All data stored on-device only</td><td>Privacy</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓</td></tr>
+          <tr><td>No advertisements</td><td>Privacy</td><td class="tbl-yes">✓</td><td class="tbl-yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
 
 <!-- LANGUAGES -->
 <section class="section" id="languages">
@@ -232,23 +837,7 @@
     <h2>Your child's data stays on your device. Always.</h2>
     <p>We built SproutPath around one principle: parents should never have to wonder where their child's information goes.</p>
   </div>
-  <div class="privacy-pillars reveal">
-    <div class="privacy-pillar">
-      <div class="privacy-pillar-icon">📵</div>
-      <h3>Stays On-Device</h3>
-      <p>All profiles, progress, memories, and schedules are stored locally on your device. Nothing is uploaded to external servers or shared with any third party — not even us.</p>
-    </div>
-    <div class="privacy-pillar">
-      <div class="privacy-pillar-icon">🚫</div>
-      <h3>Zero Ads. Zero.</h3>
-      <p>SproutPath contains no advertisements, no banners, no sponsored content, and no ad trackers. Your child will never see a single ad. We are funded entirely by subscriptions.</p>
-    </div>
-    <div class="privacy-pillar">
-      <div class="privacy-pillar-icon">🔒</div>
-      <h3>Never Shared or Sold</h3>
-      <p>We do not share, sell, or license your child's data to anyone — no analytics companies, no data brokers, no partners. What happens in SproutPath stays in SproutPath.</p>
-    </div>
-  </div>
+
   <div class="privacy-badge reveal">
     <span>🛡️</span>
     <p><strong>Parent guarantee:</strong> If we ever change these commitments, you will be notified first and given the option to delete all data before any change takes effect.</p>
@@ -299,6 +888,7 @@
     <p>Everything parents, caregivers and therapists commonly ask about SproutPath.</p>
   </div>
   <div class="faq-list reveal">
+
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
         <span>Who is SproutPath designed for?</span>
@@ -308,6 +898,7 @@
         <p>SproutPath is designed for children who benefit from visual structure, routine, and accessible learning tools — including children on the autism spectrum, those with developmental differences, and any child who thrives with clear schedules and positive reinforcement.</p>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
         <span>Is SproutPath free to use?</span>
@@ -317,6 +908,7 @@
         <p>Yes — SproutPath is free to download and includes access to core features. Optional premium plans unlock additional study content, unlimited story creation, and advanced parent hub analytics. No credit card is required to get started.</p>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
         <span>Can multiple children use the same account?</span>
@@ -326,15 +918,17 @@
         <p>Yes. You can create and switch between multiple child profiles within the same parent account. Each profile has its own schedule, progress data, memories, and star chart — completely separate from other profiles.</p>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
         <span>Is my child's data private and secure?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <p>Absolutely. SproutPath is built on three unbreakable commitments: <strong>your child's data never leaves their device</strong> — all profiles, progress, and memories are stored locally on-device and are never uploaded to external servers or shared with anyone. <strong>There are zero advertisements</strong> — no banners, no targeted ads, no third-party trackers, ever. And <strong>no data is ever sold</strong> — SproutPath is funded entirely by subscriptions, not by your child's information. Sensitive settings are protected by a parent PIN, and you can delete all data at any time from within the app.</p>
+        <p>Absolutely. SproutPath is built on three commitments: <strong>your child's data never leaves their device</strong> — profiles, progress, and memories are stored locally and never uploaded to external servers. <strong>There are no advertisements</strong> — no banners, no targeted ads, no trackers, ever. And <strong>no data is ever sold</strong> — SproutPath is funded entirely by subscriptions. Sensitive settings are protected by a parent PIN, and you can delete all data at any time from within the app.</p>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
         <span>Can therapists and educators use SproutPath?</span>
@@ -344,6 +938,7 @@
         <p>Yes. The Parents Hub includes dedicated autism support videos and resources for therapists and educators. Professional plans are available for clinics and schools that need multi-child management and session tracking tools.</p>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
         <span>What languages does SproutPath support?</span>
@@ -353,24 +948,47 @@
         <p>SproutPath supports 12 languages: English, Telugu, Hindi, Tamil, Kannada, Bengali, Marathi, Gujarati, Malayalam, Punjabi, Odia, and Assamese. The full interface — including menus, prompts, and study content — is available in each language. Switch languages anytime via Settings → Display Language.</p>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
         <span>Does the app work offline?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <p>Core features including the daily schedule, activities, study modules, and calm corner work fully offline. Data syncs automatically to the cloud when a connection is restored, so nothing is lost between sessions.</p>
+        <p>Core features including the daily schedule, activities, study modules, and calm corner work fully offline. Video content requires an internet connection to stream, but schedules, journals, and all child tools remain accessible without connectivity.</p>
       </div>
     </div>
+
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
         <span>How do I set up my child's profile?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a">
-        <p>After downloading the app, tap "Set up your profile" on the Dashboard. You can add your child's name, photo, and preferred language. Schedules and quick-access shortcuts can be personalised at any time from the Dashboard or Parents section.</p>
+        <p>After downloading the app, tap "Set up your profile" on the Dashboard. You can add your child's name, photo, age, and preferred language. Schedules and quick-access shortcuts can be personalised at any time from the Dashboard or the Parents section.</p>
       </div>
     </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Why won't a YouTube video play?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>Some video owners block in-app embedded playback. When that happens SproutPath shows a "Watch on YouTube" button that opens the video in the YouTube app or Safari instead, so your child never hits a dead end.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Is SproutPath a replacement for therapy?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>No. SproutPath is a supportive tool, not a clinical service. For diagnosis, therapy, or medical advice please work with a qualified professional. SproutPath is designed to complement — not replace — the work of therapists and educators.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -388,6 +1006,7 @@
       <div class="banner-pill">📱 iOS &amp; Android</div>
       <div class="banner-pill">♿ Accessibility built-in</div>
       <div class="banner-pill">🎓 Therapist resources</div>
+      <div class="banner-pill">🛡️ Data stays on device</div>
     </div>
   </div>
 </div>
@@ -397,13 +1016,13 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="logo-small">🌱 SproutPath</div>
-      <p>Designed with care for every child.</p>
+      <p>Designed with care for every child and every family.</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">
         <h4>Product</h4>
         <a href="#features">Features</a>
-        <a href="#screens">App screens</a>
+        <a href="#languages">Languages</a>
         <a href="#download">Download</a>
       </div>
       <div class="footer-col">
@@ -439,5 +1058,39 @@
 </div>
 
 <script src="js/main.js"></script>
+<script>
+// ── FAQ Accordion ──────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.nextElementSibling.classList.add('open');
+    }
+  });
+});
+
+// ── Perspective Switcher ───────────────────────────────────
+function switchPerspective(id, btn) {
+  document.querySelectorAll('.perspective-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  document.querySelectorAll('.persp-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  observeReveals();
+}
+
+// ── Scroll Reveal ──────────────────────────────────────────
+function observeReveals() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+}
+observeReveals();
+</script>
 </body>
 </html>
